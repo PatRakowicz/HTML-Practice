@@ -2,7 +2,8 @@
   <head>
 <title>Game</title>
     <script type="text/javascript">
-
+		
+		
         function arrowPressed(direction) {
               var element = document.getElementById("image1");
 			  element.style.left = move(element.offsetLeft, direction) + 'px';
@@ -20,11 +21,6 @@
 			}
         }
 
-        function gameLoop() {
-            // moveSelection();
-            // setTimeout("gameLoop()",20);
-		}
-
 		function move(elementXcoord, direction) {
 			var xcoord = parseInt(elementXcoord);
 			if (direction) {
@@ -40,10 +36,19 @@
 			
 		}
 	  </script>
+	  <script>
+				#block {
+			
+		}
+	  </script>
 </head>
 
   <body bgcolor='darkblue' onkeydown="moveSelection(event)" >
-  <div style="border: 1px solid white; top: 10px; left: 10px; width: 362px; height: 200px;"></div>   
-  <img id="image1" src="http://www.freelearningchannel.com/l/Content/Materials/Mathematics/Math_Grade_6/textbooks/CK12_Math_Grade_6/html/10/ck12_5_files/20130325083125434165.png" style="position: absolute; left: 20; top: 178; bottom: auto; " height="30" width="60" >
+
+  <div id="block" style="border: 1px solid white; top: 10px; left: 10px; width: 362px; height: 200px; background-color: black;"></div>
+  
+  <img id="image1" src="http://www.freelearningchannel.com/l/Content/Materials/Mathematics/Math_Grade_6/textbooks/CK12_Math_Grade_6/html/10/ck12_5_files/20130325083125434165.png" 
+					style="position: absolute; left: 160; top: 178; bottom: auto; " height="30" width="60" >
+  
   </body>
 </html>
