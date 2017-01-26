@@ -3,6 +3,38 @@
 <title>Game</title>
     <script type="text/javascript">
 		
+		var canvas  = 
+		document.getElementById("CVAS");
+		var c = canvas.getContext("2d");
+		
+		var container = {
+			x: 0,
+			y: 0,
+			width: 362;
+			height: 300;
+		}
+		
+		var circles = [{
+			x: 50,
+			y: 100,
+			r: 10,
+			vx: 10,
+			vy: 9,
+			color: 125
+		}
+		
+		fucntion animate() {
+			c.fillStyle = "green";
+			c.fillRect(container.x, container.y,
+			container.width, container.height)
+		}
+		
+		for (var i = 0; i < circles.length; i++) {
+		c.fillStyle = 'hsl(' + circles[i].color ++ + ', 100%, 50%)';
+			c.beginPath();
+		c.arc(circles[i].x, circles[i].y, circles[i].r, 0, MAth.PI * 2, true);
+			c.fill()
+		}
 		
         function arrowPressed(direction) {
               var element = document.getElementById("image1");
@@ -40,15 +72,18 @@
 				#block {
 			
 		}
+		
+// http://codepen.io/gichmbugua/pen/LpZWgo
 	  </script>
 </head>
 
+	<canvas id="CVAS" width="600ppx" height="300px"></canvas>
+
   <body bgcolor='darkblue' onkeydown="moveSelection(event)" >
 
-  <div id="block" style="border: 1px solid white; top: 10px; left: 10px; width: 362px; height: 200px; background-color: black;"></div>
+  <div id="block" style="border: 1px solid white; top: 10px; left: 10px; width: 362px; height: 300px; background-color: black;"></div>
   
   <img id="image1" src="http://www.freelearningchannel.com/l/Content/Materials/Mathematics/Math_Grade_6/textbooks/CK12_Math_Grade_6/html/10/ck12_5_files/20130325083125434165.png" 
-					style="position: absolute; left: 160; top: 178; bottom: auto; " height="30" width="60" >
-  
+					style="position: absolute; left: 160; top: 274; bottom: auto; " height="30" width="60" >
   </body>
 </html>
