@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas")
+				ctx = canvas.getContext("2d")
+						
+			var  ball = {},
+				gravity = 0.5,
+				bounceFactor = 1.0;
+			
+			ball = {
+					x: W/2,
+					y: 50,
+					
+					radius: 15,
+					color: "pink";
+				
+				
+				vx: 0,
+				vy: 1,
+				
+				darw: function() {
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+					ctx.fillStyle = this.color;
+					ctx.fill();
+					ctx.closePath();
+				}
+			};
+			
+			function clearCanvas() {
+				ctx.clearRect(0, 0, W, H);
+			}
+			
+			function update() {
+				clearCanvas();
+				ball.draw();
+				
+				ball.y += ball.vy;
+				ball.vy += gravity;
+			}
+			
+			setInterval(update, 1000/60);
+			
+// http://cssdeck.com/labs/lets-make-a-bouncing-ball-in-html5-canvas
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="350" height="450" style="border: 1px solid #000000;"></canvas>
+	</body>
+</html>
