@@ -1,95 +1,32 @@
 <html>
-	<head>
-		<script type="text/javascript">
-(function() {
-	
-	window.requestAnimationFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(f){window.setTimeout(f,1e3/60)}}();
+	<script>
+		var context;
+		var x=150;
+		var y=100;
+		var dx=0;
+		var dy=5;
 
-	var canvas = document.querySelector('canvas');
-	var ctx = canvas.getContext('2d');
-	var W = canvas.width = window.innerWidth;
-	var H = canvas.height = window.innerHeight;
-	
-	var vx = 0;
-	var vy = (Math.random() * -15) - 5;
-	
-	var gravity = 0.5;
-	var bounce_factor = 0.8;
-	
-	function Ball() {
-		this.radius = 50;
-		this.x = canvas.width / 2;
-		this.y = canvas.height - this.radius;
-		
-		this.draw = function(ctx) {
-			ctx.fillStyle = 'black';
-			ctx.beginPath();
-			
-			ctx.arc(
-				this.x,
-				this.y,
-				this.radius,
-				0,
-				Math.PI*2,
-				false
-			);
-			
-			ctx.closePath();
-			ctx.fill();
+		function init() {
+		  context= myCanvas.getContext('2d');
+		  setInterval(draw,10);
 		}
-	}
-	
-	var ball = new Ball();
-	
-	(function renderFrame() {
-		requestAnimationFrame(renderFrame);
-		ctx.clearRect(0, 0, W, H);
-		
-		vy += gravity;
-		
-		ball.x += vx;
-		ball.y += vy;
-		
-		// ball.y + ball.radius > canvas.height
-		// The above check most probably causes
-		// vy to decrease over time. Thats why a
-		// bounce factor of 1 doesnt really make ball
-		// bounce upto where it started forever.
-		//
-		// As usual, we can CHEAT :D
-		// Save the vy in a tmp variable when this if
-		// condition is hit for the first time.
-		// From next time, assign that tmp var
-		// to vy, done!
-		
-		if (
-				ball.x + ball.radius > canvas.width ||
-				ball.x - ball.radius < 0 ||
-				ball.y + ball.radius > canvas.height// ||
-				//ball.y - ball.radius  < 0
-			 ) {
-			
-			// Re-positioning on the base ;)
-			ball.x = canvas.width / 2;
-			ball.y = canvas.height - ball.radius;
-			
-			// If we do not re-set the velocities
-			// then the ball will stick to bottom :D
-			
-			// Velocity x
-			vx = 0;
-			// Velocity y
-			// vy = (Math.random() * -15) - 5;
-			vy *= -bounce_factor;
-		}
-		
-		ball.draw(ctx);
-	}());
 
-}());
-		</script>
-	</head>
-	<body>
-		<canvas script="display: block; margin: 0; padding: 0;"></canvas>
+		function draw() {
+			context.clearRect(0,0, 300,300);
+			context.beginPath();
+			context.fillStyle="#0000ff";
+			context.arc(x,y,20,0,Math.PI*2,true);
+			context.closePath();
+			context.fill();
+			x+=dx;
+			y+=dy;
+			if (y<13 || y>289) dy=-dy;
+		}
+
+</script>
+
+	<body onLoad="init();" style="background-color: orange;">
+	  <canvas id="myCanvas" width="300" height="300" style="border: 2px solid black; background-color: pink;">
+	  </canvas>
 	</body>
 </html>
