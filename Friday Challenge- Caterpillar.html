@@ -7,15 +7,13 @@
 		<script>
 			
             var mv = 0;
-            var posY = 80;
+            var posY = 450;
             var repeat = 1;
             var grow = 0.2
 			
             function function1 () {	
-
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
-
                 ctx.clearRect(0,0,c.width,c.height);
                 
 				ctx.beginPath();
@@ -29,14 +27,22 @@
 				ctx.beginPath();
 				ctx.arc(140+mv, posY, 50*grow, 0, 2 * Math.PI);
 				ctx.stroke();
-                
+				
                 if (repeat++ <= 100) {
                     mv+=1;
                     grow += 0.005;
                 }
             }
 			
-            window.setInterval(function1, 100);
+//			function make_base() {
+//				base_image = new image();
+//				base_image.src = 'https://cdn.pixabay.com/photo/2013/07/13/14/00/tree-161941_960_720.png';
+//				context.drawImage(base_image, 100, 100);
+			}
+			    
+			window.setInterval(function1, 100);
+		
 		</script> 
 
 	</body>
+</html>
