@@ -1,30 +1,42 @@
 <html>
 	<body>
 
-		<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
-		Your browser does not support the HTML5 canvas tag.</canvas>'
+		<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+		</canvas>
 		
-		<button onclick="setTimeout(function1, 1000);"> Try Me</button>
-
 		<script>
 			
-			function function1 () {	
-				var c = document.getElementById("myCanvas");
-				var ctx = c.getContext("2d");
+            var mv = 0;
+            var posY = 80;
+            var repeat = 1;
+            var grow = 0.2
+			
+            function function1 () {	
+
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+
+                ctx.clearRect(0,0,c.width,c.height);
+                
 				ctx.beginPath();
-				ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+				ctx.arc(100+mv, posY+20, 30*grow, 0, 2 * Math.PI);
 				ctx.stroke();
 				
 				ctx.beginPath();
-				ctx.arc(120, 75, 50, 0, 2 * Math.PI);
+				ctx.arc(120+mv, posY+10, 40*grow, 0, 2 * Math.PI);
 				ctx.stroke();
-			}
 			
+				ctx.beginPath();
+				ctx.arc(140+mv, posY, 50*grow, 0, 2 * Math.PI);
+				ctx.stroke();
+                
+                if (repeat++ <= 100) {
+                    mv+=1;
+                    grow += 0.005;
+                }
+            }
 			
-//			function myFunction () {
-//				alert('Hello, Hue Hue Hue');
-//			}
+            window.setInterval(function1, 100);
 		</script> 
 
 	</body>
-</html>
